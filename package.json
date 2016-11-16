@@ -1,7 +1,7 @@
 {
   "name": "projeto-sofea",
   "version": "1.0.0",
-  "description": "",
+  "description": "### NPM Link para o site oficial: https://www.npmjs.com/",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,5 +23,6 @@
     "grunt": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.2",
     "grunt-contrib-uglify": "^2.0.0"
-  }
+  },
+  "dependencies": {}
 }
