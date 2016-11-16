@@ -1,0 +1,17 @@
+<h1 class="text-center">Lista de Tarefas</h1>
+
+<h3 ng-show="self.tarefas.length == 0" class="text-center">Não há tarefas cadastradas</h3>
+<table class="table table-striped" ng-show="self.tarefas.length > 0">
+    <thead>
+        <tr>
+            <th>Tarefa</th>
+            <th>Concluida?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="tarefa in self.tarefas">
+            <td>{{tarefa.titulo}}</td>
+            <td><input type="checkbox" ng-checked="{{tarefa.concluida}}"></td>
+        </tr>
+    </tbody>
+</table>

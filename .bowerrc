@@ -1,0 +1,6 @@
+{
+    "directory": "bower_components",
+    "proxy": "http://usuario:senha@host:porta",
+    "https-proxy": "https://usuario:senha@host:porta",
+    "no-proxy": "host.dominio.com"
+}

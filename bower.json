@@ -1,0 +1,20 @@
+{
+  "name": "projeto-sofea",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Michael Fidelis"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "sofea"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

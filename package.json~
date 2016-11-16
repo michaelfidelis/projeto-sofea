@@ -1,0 +1,26 @@
+{
+  "name": "projeto-sofea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelfidelis/projeto-sofea.git"
+  },
+  "keywords": [
+    "sofea"
+  ],
+  "author": "Michael Fidelis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelfidelis/projeto-sofea/issues"
+  },
+  "homepage": "https://github.com/michaelfidelis/projeto-sofea#readme",
+  "devDependencies": {
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-uglify": "^2.0.0"
+  }
+}
