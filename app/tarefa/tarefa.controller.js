@@ -6,7 +6,27 @@
 
     function TarefaController(TarefaService) {
         var self = this;
-        self.tarefas = [];
+        self.tarefas = [
+            {
+                titulo: 'Instalar NPM'
+            },
+            {
+                titulo: 'Inicializar o projeto com  npm init'
+            },
+            {
+                titulo: 'Instalar Grunt'
+            },
+            {
+                titulo: 'Configurar as tasks do Grunt'
+            },
+            {
+                titulo: 'Instalar Bower'
+            },
+            {
+                titulo: 'Configurar o Proxy do Bower'
+            },
+
+        ];
 
         self.listarTarefas = function () {
             TarefaService.listar().then(isSuccess, isError);
@@ -16,7 +36,6 @@
             }
 
             function isError() {
-                self.tarefas = [];
                 NotificationService.adicionar('danger', 'Erro ao obter tarefas.');
             }
         };

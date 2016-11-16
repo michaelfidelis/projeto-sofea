@@ -9,11 +9,11 @@
 
         $routeProvider
             .when('/', {
-                templateUrl: 'app/tarefa/views/listar.html',
+                templateUrl: 'app/tarefa/view/listar.html',
                 controller: 'TarefaController',
                 controllerAs: 'self',
             }).when('/adicionar', {
-                templateUrl: 'app/tarefa/views/adicionar.html',
+                templateUrl: 'app/tarefa/view/adicionar.html',
                 controller: 'TarefaController',
                 controllerAs: 'self',
             })
