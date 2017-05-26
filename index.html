@@ -1,27 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app="app">
+<html ng-app="projetosofea.application">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOFEA |CDS</title>
 
-    <title>Tarefas</title>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bower_components/angular-bootstrap/ui-bootstrap.min.js" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 
+    <link href="assets/ps-lib.full-min.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 
-<body>
+<body style="background: #fff;">
+    <div class="ps-site-container" style="padding-bottom: 48px;">
+        <header class="ps-site-top ps-site-bgWhite">
+            <div class="ps-container">
+                <div class="ps-mod4 ps-sm-mod3">
+                    <a href="#" title="Porto Seguro"><span class="ps-logo"></span></a>
+                </div>
+                <div class="ps-mod4 ps-sm-mod9">
+                   <h1>Cadastro de usuários</h1>
+                </div>
+            </div>
+        </header>
 
-    <section id="tarefas" class="container" ng-view></section>
+        <section class="ps-container" ui-view></section>
 
-    <script src="bower_components/angular/angular.min.js"></script>
+        <footer class="ps-site-foot">
+            <div class="ps-container">
+                <div class="ps-mod8 ps-sm-mod5 ps-md-mod4">
+                    © <span class="ps-currentYear"></span> Porto Seguro • Todos os direitos reservados.
+                </div>
+                <div class="ps-mod8 ps-sm-mod7 ps-md-mod8">
+                    <ul class="ps-list">
+                        <li><a href="javascript" class="ps-open-modal" data-modal="#ModalPolicies">Política de privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="ps-modal" id="ModalPolicies">
+        <a href="javascript:;" class="ps-modal-close ps-modal-close-default"><span class="ps-ico ps-ico-sm ps-sm-ico-lg ps-ico-close"></span></a>
+        <div class="ps-modal-container ">
+            <div class="ps-modal-title">
+                Política de privacidade
+            </div>
+            <div class="ps-modal-content">
+                <section class="ps-legal-content">
+                    <p>Texto</p>
+                    <h2 class="ps-heading-2">Título</h2>
+                    <p>Texto</p>
+                    <h2 class="ps-heading-2">Título</h2>
+                    <p>Texto</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+	<script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="assets/all.min.js"></script>
+	<script src="assets/js/update.min.js"></script>
+    <script src="assets/js/ps-lib.full-min.js"></script>
 
+	<script src="modules/common/directive/common.directive.module.js"></script>
+    <script src="modules/common/directive/psGrid/psgrid.directive.js"></script>
+    <script src="modules/common/directive/psGrid/psColunaGrid/pscolunagrid.directive.js"></script>
+
+	<script src="modules/common/service/common.service.module.js"></script>
+    <script src="modules/common/service/usuario.service.js"></script>
+	<script src="modules/common/common.module.js"></script>
+
+    <script src="modules/cadastros/cadastros.module.js"></script>
+    <script src="modules/cadastros/cadastros.routes.js"></script>
+    <script src="modules/cadastros/usuario/usuario.controller.js"></script>
+
+    <script src="modules/application/application.module.js"></script>
+    <script src="modules/application/application.routes.js"></script>
 
 </body>
 

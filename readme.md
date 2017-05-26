@@ -1,16 +1,45 @@
 # Projeto de exemplo para arquitetura SOFEA
 ## Comandos a executar
-
-### NPM
+### NPM e Node
 Link para o site oficial: https://www.npmjs.com/
 
-Certifique -se de que o NPM está instalado na máquina, então execute: 
+Certifique -se de que o NPM e o NodeJs estão instalados em sua máquina:
+Se não tiver, acesse: https://docs.npmjs.com/getting-started/installing-node e siga os passos para instalar.
 
+Configure o **proxy** para o NPM: 
+```
+npm config set proxy http://usuario:senha@host:porta
+npm config set https-proxy https://usuario:senha@host:porta
+```
+
+**Problemas com SSL:**
+
+Se, mesmo após a configuração do proxy, você estiver com problemas para baixar as dependencias, é necessário desabilitar o SSL do NPM:
+```
+npm config set strict-ssl false
+npm config set registry="http://registry.npmjs.org/"
+```
+
+**Problemas com EACESS:**
+
+Caso você tenha problemas para baixar dependencias em questão do erro EACCES acesse: https://docs.npmjs.com/getting-started/fixing-npm-permissions.
+
+#### Inicializando o projeto: 
+Acesse a pasta do seu projeto pelo **console** e digite:
 ```
 npm init
 ```
+Preencha todas as informações solicitadas e verifique se o arquivo **package.js** foi criado.
 
-Preencha todas as informações solicitadas e verifique se o arquivo *package.js* foi criado.
+### Git
+
+Link para download: https://git-scm.com/download/win
+
+Após instalado configure o proxy: 
+
+git config --global http.proxy http://usuario:senha@host:porta
+
+git config --global https.proxy https://usuario:senha@host:porta
 
 ### Bower e Bowerrc
 Link para o site oficial: https://bower.io/
@@ -59,12 +88,14 @@ Instale o Grunt no projeto:
 
 ```
 npm install -g grunt-cli
-npm install -g grunt --save-dev
+npm install grunt --save-dev
+
 
 //Instale as dependencias tambem
 npm install grunt-contrib-uglify --save-dev
 npm install grunt-contrib-cssmin --save-dev
 ```
+
 Crie um arquivo *Gruntfile.js* na raiz do projeto, com as seguintes informações: 
 
 ```js
@@ -89,7 +120,7 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    'dist.min.css': ['foo.css', 'bar.css']
+                    'assets/dist.min.css': ['foo.css', 'bar.css']
                 }
             }
         }
@@ -108,3 +139,11 @@ module.exports = function (grunt) {
 };
 
 ```
+
+Para executar digite: 
+
+```
+grunt
+```
+
+Pronto!!

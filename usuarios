@@ -1,0 +1,42 @@
+[
+	{
+		"codigo": 1,
+		"nome": "Michael Fidelis",
+		"email": "michael.fidelis@mail.com",
+		"cpf": "123.456.789-00",
+		"sexo": "M",
+		"senha": "TestForDummies"
+	},
+	{
+		"codigo": 2,
+		"nome": "Fabricio Santos",
+		"email": "fabricio.santos@mail.com",
+		"cpf": "098.462.235-23",
+		"sexo": "M",
+		"senha": "GoToDefinitionPass"
+	},
+	{
+		"codigo": 3,
+		"nome": "Jessica Santos",
+		"email": "jessica.santos@mail.com",
+		"cpf": "636.710.034-05",
+		"sexo": "F",
+		"senha": "myDogRun"
+	},
+	{
+		"codigo": 4,
+		"nome": "Kevim Azevedo",
+		"email": "kelvim.azevedo@taste.com",
+		"cpf": "444.666.976-09",
+		"sexo": "M",
+		"senha": "password"
+	},
+	{
+		"codigo": 5,
+		"nome": "Bruno Vespino",
+		"email": "veslpino_bruno@myfood.co",
+		"cpf": "127.736.774-00",
+		"sexo": "M",
+		"senha": "withoutPassword!"
+	}
+]

@@ -1,0 +1,124 @@
+<div>
+	<div>
+		<style>
+			.jsgrid-table tbody>tr.table-selected-row,
+			.jsgrid-table tbody>tr.table-selected-row>td {
+				background-color: #00ADEF;
+				color: #fff;
+			}
+
+			.jsgrid-table tbody>tr.table-selected-row>td a {
+				color: #fff;
+				text-decoration: underline;
+			}
+
+			.jsgrid-table tbody>tr.table-selected-row>td a:hover {
+				color: #018cb7;
+				text-decoration: underline;
+			}
+
+
+			.gridOrderTop::after {
+				content: '';
+				top: 13px;
+				right: 0;
+				border-left: 7px solid transparent;
+				border-bottom: 8px solid black;
+				border-right: 7px solid transparent;
+				position: absolute;
+			}
+
+			.gridOrderBottom::after {
+				content: '';
+				top: 22px;
+				right: 0;
+				border-left: 7px solid transparent;
+				border-top: 8px solid black;
+				border-right: 7px solid transparent;
+				position: absolute;
+			}
+
+			.gridOrderTop::before {
+				content: '';
+				top: 22px;
+				right: 0;
+				border-left: 7px solid transparent;
+				border-top: 8px solid #aaa;
+				border-right: 7px solid transparent;
+				position: absolute;
+			}
+
+			.gridOrderBottom::before {
+				content: '';
+				top: 13px;
+				right: 0;
+				border-left: 7px solid transparent;
+				border-bottom: 8px solid #aaa;
+				border-right: 7px solid transparent;
+				position: absolute;
+			}
+		</style>
+	</div>
+	<div class="jsgrid jsgrid-grid-body">
+		<table class="jsgrid-table" data-filtering="false">
+			<thead>
+				<tr class="jsgrid-header-row">
+					<th ng-repeat="coluna in grid.colunas" style="white-space: normal;" title="{{coluna.titulo}}" width="{{coluna.width}}" ng-click="grid.sortBy(coluna)" colspan="{{coluna.colunaSpan}}" rowspan="{{coluna.linhaSpan}}" ng-class="{'columnSpan-Centered' : coluna.colunaSpan > 0}">
+						<span ng-if="coluna.multiselect">
+							<input type="checkbox" name="selecionartodos-{{coluna.id}}{{coluna.titulo}}" ng-checked="grid.todosSelecionados" ng-click="grid.selecionarTodos(coluna.itensSelecionados)" class="ps-frm-checkbox" id="selecionartodos-{{coluna.id}}{{coluna.titulo}}">
+							<label class="ps-frm-checkbox checkbox-grid" for="selecionartodos-{{coluna.id}}{{coluna.titulo}}">&nbsp;</label>
+						</span>
+						<span ng-if="!coluna.multiselect" ng-class="{'gridOrderBottom': (grid.colunaOrder === coluna.id || grid.colunaOrder === coluna.var) && grid.reversa, 'gridOrderTop': (grid.colunaOrder === coluna.id || grid.colunaOrder === coluna.var) && !grid.reversa}">
+							{{::coluna.titulo}}
+						</span>
+					</th>
+
+				</tr>
+				<tr ng-if="grid.subColunas" class="jsgrid-header-row">
+					<th ng-repeat="subColunas in grid.subColunas" style="white-space: normal;" title="{{subColunas.titulo}}">
+						<span ng-if="!subColunas.multiselect" ng-click="grid.sortBy(subColunas.id)">{{::subColunas.titulo}}</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="grid.data !== undefined && grid.filtrar" class="jsgrid-filter-row">
+					<td ng-repeat="item in grid.colunasFiltro" class="ps-sm-mod2 jsgrid-align-left" style="width: auto;">
+						<div ng-class="{'ps-frm-select': item.tipoFiltro === 'select'}">
+							<input type="text" ng-if="item.tipoFiltro === 'text'" ng-blur="grid.aplicarFiltro(item);" ng-keyup="grid.digitarFiltro($event, item)" ng-model="item.valorFiltro" class="ps-frm-entry ps-grid-filter">
+							<input type="text" ng-if="item.tipoFiltro === undefined || item.tipoFiltro === ''" class="ps-frm-entry ps-grid-filter ps-frm-disabled" disabled>
+
+							<select ng-if="item.tipoFiltro === 'select'" ng-model="item.valorFiltro" ng-change="grid.selecionarFiltro();">
+								<option></option>
+								<option ng-repeat="option in item.listaFiltro" value="{{option.codigo}}">{{option.descricao}}</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+
+				<tr ng-if="grid.data !== undefined && grid.data.length > 0" ng-dblclick="grid.doubleClick();" class="psgrid-row" ng-repeat="$item in grid.registrosPaginados | orderBy: grid.colunaOrder :grid.reversa" ng-class="{'table-selected-row': grid.isSelecionado($item), 'selectable-item': !grid.gridMultiselect, 'cursorPointer': grid.acaoDoubleClick}" ng-click="grid.selecionarItem($item)" ng-class-odd="'jsgrid-row'" ng-class-even="'jsgrid-alt-row'" ng-transclude>
+				</tr>
+
+				<tr ng-show="false" ng-if="grid.data === undefined || grid.data.length === 0" ng-transclude></tr>
+				<tr ng-if="grid.data === undefined || grid.data.length === 0">
+					<td colspan="{{grid.colunas.length}}" style="text-align: center;"><strong>Nenhum resultado encontrado</strong></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<div class="row" ng-if="grid.mostrarPaginacao">
+		<div class="ps-mod8 ps-sm-mod12 ps-md-mod12 pull-right ps-datagrid-footer no-padding">
+			<div class="ps-hide ps-md-show ps-md-mod3 ps-datagrid-info">
+				Total {{grid.totalRegistros}} | Página {{grid.pagina}} de {{grid.totalPaginas}}
+			</div>
+			<div class="ps-md-mod3 ps-datagrid-info">
+				Itens por Página
+				<select ng-model="grid.qtdItensPagina" ng-options="item for item in grid.listQtdItensPagina" ng-change="grid.atualizarQtdItensPagina();">
+				</select>
+			</div>
+			<div class="ps-mod8 ps-sm-mod6 ps-md-mod6">
+				<pagination ng-model="grid.pagina" total-items="grid.totalRegistros" items-per-page="grid.tamanhoPagina" max-size="5" class="pull-right paginationNewG" previous-text="<" next-text=">" first-text="<< Primeiro" last-text="Último >>" boundary-links="true" />
+			</div>
+		</div>
+	</div>
+</div>

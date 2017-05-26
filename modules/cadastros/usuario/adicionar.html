@@ -1,0 +1,68 @@
+<form>
+    <div id="novo-usuario">
+        <h2>Novo usuário</h2>
+        <div class="ps-row">
+            <div class="ps-mod8 ps-sm-mod6 ps-frm-row">
+                <label class="ps-frm-lbl">Nome</label>
+                <input type="text" name="test" class="ps-frm-entry" placeholder="Ex.: José da Silva" ng-model="usuarioController.usuario.nome" />
+            </div>
+            <div class="ps-mod8 ps-sm-mod6 ps-frm-row">
+                <label class="ps-frm-lbl">Email</label>
+                <input type="email" name="email" class="ps-frm-entry ps-frm-email" placeholder="Preencha o e-mail" ng-model="usuarioController.usuario.email" />
+            </div>
+        </div>
+
+        <div class="ps-row">
+            <div>
+                <div class="ps-mod6 ps-sm-mod6 ps-frm-row">
+                    <label class="ps-frm-lbl">CPF</label>
+                    <input type="tel" name="test" class="ps-frm-entry ps-frm-cpf" placeholder="Preencha o CPF" data-onerror="#cpfError" ng-model="usuarioController.usuario.cpf" />
+                </div>
+                <div class="ps-mod8 ps-sm-mod4 ps-frm-row" id="cpfError" style="display: none;">
+                    <label class="ps-frm-lbl">&#160;</label>
+                    <div class="ps-popover ps-popover-error">
+                        <div class="ps-popover-ctt ps-popover-ctt-icon">
+                            <span class="ps-ico ps-ico-alert"></span> CPF Inválido.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ps-mod6 ps-sm-mod6 ps-frm-row">
+                <label class="ps-frm-lbl ps-lbl-helper">
+               Sexo
+                <span class="ps-ico ps-ico-doubt ps-popover-toggle ps-popover-toggle-over" data-popover="#PopoverHelper1"></span>
+            </label>
+                <div class="ps-popover ps-popover-event" id="PopoverHelper1">
+                    <div class="ps-popover-ctt">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper accumsan porta.
+                    </div>
+                </div>
+                <div class="ps-frm-select">
+                    <select name="test" ng-model="usuarioController.usuario.sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div class="ps-row">
+        <div class="ps-mod8 ps-sm-mod6 ps-frm-row">
+                <label class="ps-frm-lbl">Senha</label>
+                <input type="password" name="test" class="ps-frm-entry" placeholder="Digite sua senha aqui" ng-model="usuarioController.usuario.senha" />
+            </div>
+
+        </div>
+		  <div class="ps-mod2 ps-sm-mod2 ps-md-mod2 ps-md-lspan8">
+                <a href="#/usuarios" class="ps-btn">Voltar</a>
+            </div>
+        <div class="ps-row">
+            <div class="ps-mod2 ps-sm-mod2 ps-md-mod2 ">
+                <input type="button" class="ps-btn ps-btn-primary" value="Salvar" ng-click="usuarioController.adicionarUsuario()" />
+            </div>
+
+        </div>
+    </div>
+</form>
+<br>
+<br>
