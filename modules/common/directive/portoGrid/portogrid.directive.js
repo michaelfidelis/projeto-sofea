@@ -14,7 +14,6 @@
             bindToController: true,
             controller: PortoGridController,
             controllerAs: 'grid',
-            link: PortoGridLink,
             scope: {
                 data: '=',
                 variavel: '@?',
@@ -33,39 +32,45 @@
         function PortoGridController($scope, $element, $attrs) {
             var self = this;
             self.colunas = [];
+            self.data = self.data || [];
+            self.tableBody = $element.find('TBODY');
+            console.log('Data: ', self.data);
 
             self.adicionarColuna = function (coluna) {
-                var colunaExistente = self.colunas.some(function (item) {
-                    return item.titulo === coluna.attributes.titulo.value;
-                });
-
-                console.log('Coluna adicionada: ' + coluna.attributes.titulo.value);
                 var colunaData = {
                     titulo: coluna.attributes.titulo.value,
                     atributos: coluna.attributes,
                     elemento: coluna
                 };
                 self.colunas.push(colunaData);
-                self.adicionaTag(colunaData.elemento);
+
+                var novaColuna = angular.element('<td></td>');
+
+                var tableRows = self.tableBody.find('TR') || [];
+                console.log('TableRows: ', tableRows);
+                angular.forEach(tableRows, function(tableRow){
+                    tableRow.cells.push(angular.element('<td></td>'));
+                });
                 coluna.remove();
+
             }
 
-            self.adicionaTag = function (coluna) {
-
-                var tableBody = $element.find('TBODY');
-                var tableRow = tableBody.find('TR');
-
-                var tableColumn = angular.element('<td></td>')
-                tableColumn.append(coluna.innerHTML);
-                tableRow.append(tableColumn);
+            self.adicionarLinhas = function () {
+                console.log('Adicionando linhas...');
+                var index = 0;
+                self.data.forEach(function (registro) {
+                    var tableRow = angular.element('<tr>{{usuario.nome}}</tr>')
+                    tableRow.addClass('psgrid-row jsgrid-row');
+                    tableRow.attr('ng-class-odd', 'jsgrid-row');
+                    tableRow.attr('ng-class-even', 'jsgrid-alt-row');
+                    tableRow[self.variavel] = registro;
+                    tableRow.$index = index++;
+                    self.tableBody.append(tableRow);
+                })
             }
 
+            self.adicionarLinhas();
         }
 
-        PortoGridLink.$inject = ['scope', 'element', 'attrs', 'controller'];
-
-        function PortoGridLink(scope, element, attrs, controller) {
-
-        }
     }
 })();

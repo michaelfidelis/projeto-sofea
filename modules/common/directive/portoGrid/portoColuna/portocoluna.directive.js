@@ -16,7 +16,6 @@
 
         PortoColunaLink.$inject = ['scope', 'element', 'attrs', 'gridController'];
         function PortoColunaLink(scope, element, attrs, gridController){
-            console.log('Element: ', element);
 
             if(!attrs.titulo) {
                 throw new SyntaxError('Titulo da coluna é obrigatório! <porto-coluna titulo=\'xxx\'>');
