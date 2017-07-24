@@ -16,7 +16,6 @@
 			UsuarioService.query().$promise.then(isSuccess, isError);
 
 			function isSuccess(response) {
-				console.log('Usuarios: '+ JSON.stringify(response), response);
 				self.usuarios = response;
 			}
 

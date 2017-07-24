@@ -1,0 +1,13 @@
+<div>
+    <div ng-transclude></div>
+    <table class="jsgrid-table">
+        <thead>
+            <tr class="jsgrid-header-row">
+                <th ng-repeat="coluna in grid.colunas" style="white-space: normal;">{{::coluna.titulo}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="psgrid-row jsgrid-row" ng-class-odd="'jsgrid-row'" ng-class-even="'jsgrid-alt-row'"></tr>
+        </tbody>
+</table>
+</div>

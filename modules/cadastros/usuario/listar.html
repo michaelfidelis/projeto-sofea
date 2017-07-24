@@ -1,6 +1,6 @@
 <h1 class="text-center">Lista de Usuários <a href="#!/usuarios/adicionar">(novo)</a></h1>
 
-<ps-grid tamanho-pagina="5" data="usuarioController.usuarios" variavel="usuario" item-selecionado="usuarioController.usuario">
+<ps-grid tamanho-pagina="5" data="usuarioController.usuarios" variavel="usuario" item-selecionado="usuarioController.usuario" ng-if="false">
 	<ps-coluna-grid titulo="Nome" id="nome-usuario"> {{usuario.nome}}</ps-coluna-grid>
 	<ps-coluna-grid titulo="E-mail" id="email-usuario"> {{usuario.email}}</ps-coluna-grid>
 	<ps-coluna-grid titulo="Sexo" id="sexo-usuario"> {{usuario.sexo}}</ps-coluna-grid>
@@ -9,3 +9,11 @@
 		<a href="javascript:void(0)" ng-click="usuarioController.removerUsuario(usuario, $index)">remover</a>
 	</ps-coluna-grid>
 </ps-grid>
+
+
+<porto-grid data="usuarioController.usuarios">
+    <porto-coluna titulo="Nome">Coluna nome</porto-coluna>
+    <porto-coluna titulo="E-mail">Coluna email</porto-coluna>
+    <porto-coluna titulo="Sexo">Coluna sexo</porto-coluna>
+    <porto-coluna titulo="Editar"><a href="javascript:void(0);">Editar</a></porto-coluna>
+</porto-grid>
