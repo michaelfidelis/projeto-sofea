@@ -1,4 +1,6 @@
 (function () {
     'use strict';
-    angular.module('projetosofea.common.service', []);
+    angular.module('projetosofea.common.service', [
+        'ngResource'
+    ]);
 })();
