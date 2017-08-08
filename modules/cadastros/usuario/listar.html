@@ -11,8 +11,8 @@
 </ps-grid>
 
 
-<porto-grid data="usuarioController.usuarios">
-    <porto-coluna titulo="Nome">Coluna nome</porto-coluna>
+<porto-grid data="usuarioController.usuarios" variavel="usuario">
+    <porto-coluna titulo="Nome">{{usuario.nome}}</porto-coluna>
     <porto-coluna titulo="E-mail">Coluna email</porto-coluna>
     <porto-coluna titulo="Sexo">Coluna sexo</porto-coluna>
     <porto-coluna titulo="Editar"><a href="javascript:void(0);">Editar</a></porto-coluna>
